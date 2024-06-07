@@ -18,25 +18,6 @@ public class AuthenticationService {
     @Autowired
     private IUserRepository iUserRepository;
 
-@Transactional
-    public UserDto register(RegisterRequestDto registerRequestDto){
-    User user = convertToEntity(registerRequestDto);
-     iUserRepository.save(user);
-   return null;
-    }
-
-
-    public User convertToEntity(RegisterRequestDto registerRequestDto){
-    return new User(
-            null,
-            registerRequestDto.getName(),
-            registerRequestDto.getPaternal_surname(),
-            registerRequestDto.getMaternal_surname(),
-            registerRequestDto.getEmail(),
-            registerRequestDto.getPassword(),
-            Role.user
-            );
-    }
 
 
 }

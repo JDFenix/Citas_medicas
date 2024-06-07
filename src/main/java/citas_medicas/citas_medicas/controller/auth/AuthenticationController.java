@@ -31,9 +31,6 @@ public class AuthenticationController {
 
 
 
-    @PostMapping("/register")
-    public String register(Model model, @RequestBody RegisterRequestDto registerRequestDto){
-        return "";
-    }
+
 
 }
