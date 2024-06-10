@@ -23,7 +23,4 @@ public enum Role {
         this.permission = permission;
     }
 
-
-
-
 }

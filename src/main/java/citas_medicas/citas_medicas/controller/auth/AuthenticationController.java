@@ -23,14 +23,5 @@ public class AuthenticationController {
         return "auth/loginFormC";
     }
 
-    //retorno formulario de registro
-    @GetMapping("/registerForm")
-    public String registerForm(Model model) {
-        return "auth/registerForm";
-    }
-
-
-
-
 
 }

@@ -21,19 +21,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String usuarname;
 
     @Column(nullable = false)
-    private String paternal_surname;
-
-    @Column(nullable = false)
-    private String maternal_surname;
-
-    @Column(unique = true,nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
+    private String number;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

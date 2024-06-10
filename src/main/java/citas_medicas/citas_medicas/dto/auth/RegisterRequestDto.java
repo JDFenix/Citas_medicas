@@ -6,9 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class RegisterRequestDto {
-    public String name;
-    public String paternal_surname;
-    public String maternal_surname;
-    public String email;
-    public String password;
+    public String usuarname;
+    public String number;
 }

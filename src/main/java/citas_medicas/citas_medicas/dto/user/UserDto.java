@@ -10,10 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    public String name;
-    public String paternal_surname;
-    public String maternal_surname;
-    public String email;
-    public String password;
+    public String usuarname;;
+    public String number;
     public Role role;
 }
