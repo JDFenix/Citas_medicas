@@ -1,5 +1,6 @@
 package citas_medicas.citas_medicas.service.user;
 
+
 import citas_medicas.citas_medicas.dto.auth.RegisterRequestDto;
 import citas_medicas.citas_medicas.dto.user.UserDto;
 import citas_medicas.citas_medicas.entity.user.User;
@@ -11,38 +12,56 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Service
 public class UserService {
 
     @Autowired
     private IUserRepository iUserRepository;
 
+
+
+    //estudiar para que es transctional
     @Transactional(readOnly = true)
     public List<User> getAllUser() {
-        return iUserRepository.findAll();
+    return iUserRepository.findAll();
     }
+
+
 
     @Transactional
     public UserDto register(RegisterRequestDto registerRequestDto){
         User user = convertToEntity(registerRequestDto);
+        //checar el metodo conver to entity
         iUserRepository.save(user);
-        return convertToDto(user);
+        return convertToDto(registerRequestDto);
     }
 
-    public UserDto convertToDto(User user){
+//se usa el dto Data Object Transfer para no mostrar la logica de la entidad en el controlador por buenas practicas
+    //basi se encapsula los datos que se ingresen
+    public UserDto convertToDto(RegisterRequestDto registerRequestDto){
         return new UserDto(
-                user.getUsuarname(),
-                user.getNumber(),
-                user.getRole()
-        );
-    }
-
-    public User convertToEntity(RegisterRequestDto registerRequestDto){
-        return new User(
-                null,
-                registerRequestDto.getUsuarname(),
-                registerRequestDto.getNumber(),
+                registerRequestDto.getName(),
+                registerRequestDto.getPaternal_surname(),
+                registerRequestDto.getMaternal_surname(),
+                registerRequestDto.getEmail(),
+                registerRequestDto.getPassword(),
                 Role.user
         );
     }
+
+
+    //se convertierte en entidad ya que el guardado en la bd requiere ua entidad
+    public User convertToEntity(RegisterRequestDto registerRequestDto){
+        return new User(
+                null,
+                registerRequestDto.getName(),
+                registerRequestDto.getPaternal_surname(),
+                registerRequestDto.getMaternal_surname(),
+                registerRequestDto.getEmail(),
+                registerRequestDto.getPassword(),
+                Role.user
+        );
+    }
+
 }
